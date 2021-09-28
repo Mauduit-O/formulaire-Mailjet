@@ -3,7 +3,7 @@
 require_once  './config.php';
 require '../vendor/autoload.php';
   use \Mailjet\Resources;
-    $mj = new \Mailjet\Client('', '',true,['version' => 'v3.1']);
+  $mj = new \Mailjet\Client('', '',true,['version' => 'v3.1']);
     $token = $_GET['token'];  
     $_SESSION['user'] = $data['token']; 
 
@@ -43,7 +43,7 @@ require '../vendor/autoload.php';
                 ],
                 'Subject' => "Nouveau lead",
                 'TextPart' => 
-                "Nouveau lead ! $dataEmail
+                "Nouveau lead ! 
 
                 Source prospect : $pseudo   
 
