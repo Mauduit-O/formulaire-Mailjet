@@ -3,7 +3,7 @@
 
 # Test For Dimo
 
-This project uses composer and mailjet. 
+This project uses composer and mailjet (the file doesn't contain the key). 
 
 Time spent on the project: 48h
 
@@ -24,3 +24,4 @@ Clone the repository
 ## Start
 
 `start local server`
+
