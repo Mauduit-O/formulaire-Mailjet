@@ -1,0 +1,213 @@
+body {
+    background-color: #FBFFFD;
+}
+
+.alert-form {
+    font-family: helvetica;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    background-color: #7e7efd7a;
+    color: white;
+    height: 30px;
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0% 3%;
+}
+
+.logo-dimo {
+    margin: 2%;
+    width: 100px;
+}
+
+.container-page-diagnostic {
+    display: flex;
+    margin: 3% 10% 0% 5%;
+} 
+
+.content-disconnected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn-disconnected {
+    font-family: helvetica;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    background-color: #7E7EFD;
+    color: white;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    align-content: stretch;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+
+.container-diagnostic{
+    margin-left: 10%;
+    padding-right: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #3D3D3D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-title {
+    margin: 0% 4% 4% 0%;
+}
+
+.title-diagnostic {
+    font-family: Helvetica;
+    font-weight: 550;
+    font-Size: 24px;
+}
+
+.text-ino-diagnostic {
+    line-height: 25px;
+}
+
+
+.container-more-info-diagnostic {
+    margin-bottom: 4%;
+}
+
+
+.content-more-info-diagnostic {
+    display: flex;
+}
+
+.icon-info-diagnostic {
+    margin-right: 15px;
+}
+
+.title-client {
+    font-family: helvetica;
+    font-weight: 550;
+    font-size: 20px;
+}
+
+.img-client{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 4%;
+}
+
+.logo-client {
+    margin: 5%;
+}
+
+.container-form-diagnostic {
+    font-family: Helvetica;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.17);
+    border-radius: 20px;
+    position: relative;
+}
+
+.header-form-diagnostic {
+    text-align: center;
+    background-color: #F2F1FF;
+    width: 100%;
+    position: absolute;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.title-header-form {
+    font-family: helvetica;
+    color: #3D3D3D;
+    font-weight: 550;
+    font-size: 14px;
+}
+
+.form-diagnostic {
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-form-input-diagnostic {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label-form {
+    font-size: 14px;
+    margin: 0 0 2% 2%;
+}
+
+.label-form-required {
+    font-family: Helvetica-Bold;
+    color: #22BC66;
+}
+
+.content-input-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-input-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-form-diagnostic {
+    width: 167px;
+    height: 43px;
+    background-color: white;
+    border: 1px solid #DCDCFF;
+    border-radius: 6px;
+    display: flex;
+}
+
+.input-form-diagnostic--email {
+    width: 346px;
+}
+
+.container-form-input-choice  {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-btn-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 12%;
+    margin-bottom: 12%;
+}
+
+.btn-form-submit {
+    width: 285px;
+    height: 42px;
+    background-color: #22BC66;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+

@@ -1,0 +1,113 @@
+body {
+    background: linear-gradient(to right,  white 0%,white 20%,#F2FBF6 20%,#F2FBF6 100%);  
+}
+
+.alert {
+    font-family: helvetica;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    background-color: #7e7efd7a;
+    color: white;
+    height: 30px;
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-success {
+    background-color: #459c787a;
+}
+
+.alert-danger {
+    background-color: #e772777a;
+}
+
+.logo-dimo {
+    margin: 2%;
+    width: 100px;
+}
+
+.container-register {
+    margin: 6% 25% 5% 40%;
+}
+
+.title-register {
+    font-family: Helvetica;
+    font-weight: 600;
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container-input {
+    font-family: Helvetica-Light;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-iconandinput {
+    position: relative;
+}
+
+.input {
+    width: 408px;
+    height: 43px;
+    padding-left: 60px;
+    background-color: white;
+    border: none;
+}
+
+.input::placeholder {
+    color: #3D3D3D;
+}
+
+.icon-login {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 4px;
+}
+
+.btn-submit {
+    font-family: Helvetica;
+    font-size: 18px;
+    Width: 234px;
+    Height: 42px;
+    border: none;
+    background-color: #7E7EFD;
+    color: white;
+}
+
+.text-link-register {
+    text-align: center;
+}
+
+.link-register {
+    font-family: helvetica;
+    font-weight: 300px;
+    font-size: 12px;
+    color: #3D3D3D;
+    text-decoration: none;
+}
+
+.container-img{
+    margin-left: 7.2%;
+    position: absolute;
+    bottom: 0;
+} 
+
+.register-img {
+    height: 200px;
+}
+
