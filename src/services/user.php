@@ -1,22 +1,28 @@
 <?php 
-    session_start();
     require_once 'config.php'; // Connexion à la base de données
     // si la session n'existe pas , redirection vers l'index
-    if(!isset($_SESSION['user'])){
+    
+    if(!isset($_GET['token'])){
         header('Location:index.php');
         die();
     }
 
     // Récupération du nom de l'utilisateur
-    $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE token = ?');
-    $req->execute(array($_SESSION['user']));
+    // $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE token = ?');
+    // $req->execute($_GET['token']);
+    // $data = $req->fetch();  
+    $token = $_GET['token'];  
+    $_SESSION['user'] = $data['token'];   
+    $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE token ="' . $token.'"');
+    $req->execute();
     $data = $req->fetch();
-
+    $pseudo = $data['pseudo'];
+    
     // Création des alertes
     if(isset($_GET['reg_err']))
     {
         $err = htmlspecialchars($_GET['reg_err']);
-
+        
         switch($err)
         {
             case 'form':
@@ -62,7 +68,7 @@
         <div class="container-page-diagnostic">
             <section class="container-diagnostic">    
                 <div class="container-title">
-                    <h1 class="title-diagnostic">Bonjour <?php echo $data['pseudo']; ?> , </br> Votre diagnostic en un clic</h1>
+                    <h1 class="title-diagnostic">Bonjour <?php echo $pseudo['pseudo']; ?> , </br> Votre diagnostic en un clic</h1>
                     <p class="text-ino-diagnostic">Les équipes d'experts de Dimo sont spécialisées et certifiées pour réaliser vos diagnostics immobiliers.</p>
                 </div>
 
@@ -103,7 +109,7 @@
                     <h1 class="title-header-form ">Faites nous confiance, gagnez du temps !</h1>
                 
                 </div>
-                <form class="form-diagnostic" action="contact.php" method="POST">
+                <form class="form-diagnostic" action="contact.php?token=<?= $_GET['token']?>" method="POST">
                     <div class="container-form-input-diagnostic">
                         <div class="container-input-form">
                             <p class="content-input-form">

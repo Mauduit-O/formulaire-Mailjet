@@ -1,8 +1,12 @@
 <?php
 // Authentification Api mailjet
+require_once  './config.php';
 require '../vendor/autoload.php';
   use \Mailjet\Resources;
-    $mj = new \Mailjet\Client('47992f7c12d5b354d4bd09db0ab6c20e', 'daf383d0bca2b05a8a7d833bf11ae1c7',true,['version' => 'v3.1']);
+    $mj = new \Mailjet\Client('', '',true,['version' => 'v3.1']);
+    $token = $_GET['token'];  
+    $_SESSION['user'] = $data['token']; 
+
 
     // Si les variables existent et qu'elles ne sont pas vides
     if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['email']) && !empty($_POST['phone']) && !empty($_POST['address']) && !empty($_POST['code']) && !empty($_POST['city']) && !empty($_POST['property-type']) && !empty($_POST['year']) ){
@@ -15,6 +19,12 @@ require '../vendor/autoload.php';
         $city = htmlspecialchars($_POST['city']);
         $propertyType = htmlspecialchars($_POST['property-type']);
         $year = htmlspecialchars($_POST['year']);
+        
+        $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE token ="' . $token.'"');
+        $req->execute();
+        $data = $req->fetch();
+        $dataEmail = $data['email'];
+        $pseudo = $data['pseudo'];
 
 
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -22,7 +32,74 @@ require '../vendor/autoload.php';
             'Messages' => [
         [
         'From' => [
-            'Email' => "oum-el-khaire.mauduit@hetic.net",
+            'Email' => "melproject310@gmail.com",
+            'Name' => "Dimo"
+        ],
+        'To' => [
+            [
+                'Email' => "oum-el-khaire.mauduit@hetic.net",
+                'Name' => "Dimo"
+            ]
+                ],
+                'Subject' => "Nouveau lead",
+                'TextPart' => 
+                "Nouveau lead ! $dataEmail
+
+                Source prospect : $pseudo   
+
+                Son client 
+                Nom : $surname    
+                Prénom : $firstname    
+                Adresse : $address, $code, $city    
+                Téléphone : $phone    
+                Email : $email    
+                Type de bien : $propertyType    
+                Année de construction : $year    
+                Offre : 299 €", 
+            ]
+            ]
+        ];
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+
+        $body = [
+            'Messages' => [
+        [
+        'From' => [
+            'Email' => "melproject310@gmail.com",
+            'Name' => "Dimo"
+        ],
+        'To' => [
+            [
+                'Email' => "$dataEmail",
+                'Name' => "Dimo"
+            ]
+                ],
+                'Subject' => "Nouveau lead",
+                'TextPart' => 
+                "Nous avons bien reçu votre demande. Veuillez trouver le récapitulatif ci dessous : 
+                
+                Source prospect : $pseudo   
+
+                Votre client
+                Nom : $surname    
+                Prénom : $firstname    
+                Adresse : $address, $code, $city    
+                Téléphone : $phone    
+                Email : $email    
+                Type de bien : $propertyType    
+                Année de construction : $year
+                Diag à réaliser : DPE, AM, TER, PB  
+                Offre : 299 €", 
+            ]
+            ]
+        ];
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+
+        $body = [
+            'Messages' => [
+        [
+        'From' => [
+            'Email' => "melproject310@gmail.com",
             'Name' => "Dimo"
         ],
         'To' => [
@@ -35,7 +112,7 @@ require '../vendor/autoload.php';
                 'TextPart' => 
                 "Bonjour $surname $firstname,
 
-                Votre agence nous a sollicité afin vous adresser une offre dans le cadre de votre projet.
+                $pseudo nous a sollicité afin vous adresser une offre dans le cadre de votre projet.
                 
                 Pour votre projet immobilier pour le bien situé à cette adresse : $address, $code, $city
                 Il vous faudra réaliser : DPE, AM, TER, PB 
@@ -45,38 +122,6 @@ require '../vendor/autoload.php';
                 
                 Cordialement. 
                 DIMO Diagnostic", 
-            ]
-            ]
-        ];
-        $response = $mj->post(Resources::$Email, ['body' => $body]);
-
-        $body = [
-            'Messages' => [
-        [
-        'From' => [
-            'Email' => "oum-el-khaire.mauduit@hetic.net",
-            'Name' => "Dimo"
-        ],
-        'To' => [
-            [
-                'Email' => "fkulczak@dimo-diagnostic.net",
-                'Name' => "Dimo"
-            ]
-                ],
-                'Subject' => "Nouveau lead",
-                'TextPart' => 
-                "Nouveau lead !
-
-                Source prospect : Agence  
-                Son client 
-                Nom : $surname    
-                Prénom : $firstname    
-                Adresse : $address, $code, $city    
-                Téléphone : $phone    
-                Email : $email    
-                Type de bien : $propertyType    
-                Année de construction : $year    
-                Offre : 299 €", 
             ]
             ]
         ];
@@ -90,11 +135,9 @@ require '../vendor/autoload.php';
         }
 
     }else {
-        heade('Location:index.php');
+        header('Location:index.php');
     }    
-    header('Location:user.php?reg_err=form');
+    // $chemin = "user.php?token=".$data['token']."?reg_err=form";
+    header("Location: user.php?token=".$data['token']."&reg_err=form");
     die();
 ?>
-
-
-

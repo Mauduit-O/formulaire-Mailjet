@@ -32,6 +32,7 @@
                             
                             // Stock l'adresse IP
                             $ip = $_SERVER['REMOTE_ADDR']; 
+                            $token = bin2hex(openssl_random_pseudo_bytes(64));
 
                             // Insère dans la base de données
                             $insert = $bdd->prepare('INSERT INTO utilisateurs(pseudo, email, password, ip, token) VALUES(:pseudo, :email, :password, :ip, :token)');
@@ -40,7 +41,7 @@
                                 'email' => $email,
                                 'password' => $password,
                                 'ip' => $ip,
-                                'token' => bin2hex(openssl_random_pseudo_bytes(64))
+                                'token' => $token
                             ));
                             // Redirige avec le message de succès
                             header('Location:inscription.php?reg_err=success');

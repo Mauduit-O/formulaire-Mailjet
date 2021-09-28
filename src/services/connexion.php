@@ -1,5 +1,4 @@
 <?php 
-    session_start(); // Démarrage de la session
     require_once 'config.php'; // Inclut la connexion à la base de données
 
     if(!empty($_POST['email']) && !empty($_POST['password'])) // Verifie que les champs email et password ne sont pas vide
@@ -15,8 +14,6 @@
         $check->execute(array($email));
         $data = $check->fetch();
         $row = $check->rowCount();
-        
-        
 
         // Si > à 0 alors l'utilisateur existe
         if($row > 0)
@@ -29,9 +26,10 @@
                 {
                     // On créer la session et on redirige sur user.php
                     $_SESSION['user'] = $data['token'];
-                    header('Location: user.php');
+                    header('Location: user.php?token='.$data['token']);
                     die();
                 }else{ header('Location: index.php?login_err=password'); die(); }
             }else{ header('Location: index.php?login_err=email'); die(); }
         }else{ header('Location: index.php?login_err=already'); die(); }
-    }else{ header('Location: index.php'); die();} 
+    }else{
+        header('Location: index.php'); die();} 
