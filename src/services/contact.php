@@ -3,7 +3,7 @@
 require_once  './config.php';
 require '../vendor/autoload.php';
   use \Mailjet\Resources;
-  $mj = new \Mailjet\Client('01bab1985513a65ed340dfa7ca81a392', '1b99eaedd47ba43b6247ec6d967c48fb',true,['version' => 'v3.1']);
+  $mj = new \Mailjet\Client('', '',true,['version' => 'v3.1']);
 
     $token = $_GET['token'];  
     $_SESSION['user'] = $data['token']; 
